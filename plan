@@ -1,0 +1,18 @@
+## Plan: Build Multiplayer Blank Slate Game
+
+A Next.js + Socket.IO web game where players complete word prompts and score points for matching (but not too many) other players. Streamer-friendly UI, private rooms, real-time multiplayer, and external video chat support.
+
+### Steps
+
+1. **Initialize project structure** — Create Next.js frontend with TypeScript/Tailwind and separate server directory for Node.js + Socket.IO backend
+2. **Build Socket.IO event system** — Implement real-time events for room management (create/join), game state sync, answer submission, and phase transitions in server/index.js
+3. **Create core game components** — Build components/GameRoom.tsx, components/PlayerSlate.tsx, components/PromptCard.tsx, and components/ScoreBoard.tsx with phase-based rendering
+4. **Implement game logic** — Add prompt library in lib/prompts.ts, scoring algorithm in lib/scoring.ts (3pts match, 1pt unique, 0pts all-match), and phase management state machine
+5. **Add streamer mode** — Create toggle in components/StreamerMode.tsx with overlay-friendly layout, larger text, transparent backgrounds, and spectator view
+6. **Configure deployment** — Add netlify.toml for frontend, fly.toml for backend, environment variables for Socket.IO server URL
+
+### Further Considerations
+
+1. **Room code generation** — Use 6-character alphanumeric codes vs 4-digit PINs? Recommend 6-char for uniqueness
+2. **Round timer** — Fixed 60 seconds vs host-configurable (30/60/90s)? Suggest 60s default with future customization
+3. **Prompt categories** — Start with 100+ mixed prompts or organize into themes (Food, Pop Culture, Animals, etc.) from the start? Recommend mixed for MVP
